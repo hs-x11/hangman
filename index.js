@@ -2,6 +2,7 @@ import prompt from "readline-sync";
 import wordBank from "./word-bank.js";
 
 
-const letter = prompt.questioon('This user guessed a letter:');
 
-console.log('Letter: ', letter);
+console.log("\nWelcome to Hangman!\nPress ctrl+c to stop\n");
+
+const letter = prompt.question("Please guess a letter: ");
