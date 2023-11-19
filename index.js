@@ -4,21 +4,21 @@ import wordBank from "./word-bank.js";
 // MAKE SURE TO USE ARROW FUNCTIONS
 
 //function to pick a random word from the word bank
-function getRandomWord() {
-    const word = wordBank;
-    console.log(word);
+
+const getRandomWord = () => {
+    let word = wordBank;
+    word = word[Math.floor(Math.random() * word.length)];
     return word;
-    //this will return a random word
+};
 
+const initializeDisplay = () => {
+    let underScoreWord = [];
+    for (let i = 0; i < getRandomWord().length; i++) { 
+        underScoreWord[i] = '_';
+    }
+    return underScoreWord.join('');
 }
-
-
-// function to initialize the game play display it will render underscores for each letter in the word. This function accepts a stringas a parameter.
-function initializeDisplay(word) {
-    // this will render the underscores for each letter in the word.
-    // create a display string with underscores for each letter in the word
-    // return the display string
-}
+console.log(initializeDisplay());
 
 // function to update the display that the user can see
 function updateDisplay(string) {
@@ -66,7 +66,7 @@ function playGame() {
 
 }
 
-const words = wordBank;
+
 const alphabet = "ABCDEFGHIJKLMOPQRSTUVWXYZ".split('');
 
 console.log("\nWelcome to Hangman!\nPress ctrl+c to stop\n");
