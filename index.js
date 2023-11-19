@@ -1,10 +1,6 @@
 import prompt from "readline-sync";
 import wordBank from "./word-bank.js";
 
-// MAKE SURE TO USE ARROW FUNCTIONS
-
-//function to pick a random word from the word bank
-
 const getRandomWord = () => {
     let word = wordBank;
     word = word[Math.floor(Math.random() * word.length)];
