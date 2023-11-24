@@ -1,7 +1,7 @@
 import prompt from "readline-sync";
 import wordBank from "./word-bank.js";
 
-const drawHangman = (remainingGuesses) => {
+const hangmanBody = (remainingGuesses) => {
     if (remainingGuesses === 7) {
         return `\nWelcome to Hangman!\nPress ctrl+c to stop\n`;
 
@@ -98,6 +98,9 @@ const playGame = () => {
 
     // repeat until the game is won or amount of guesses is = 0.
     while(!isGameOver(word, display, remainingGuesses)) {
+        const hangmanDisplay = hangmanBody(remainingGuesses);
+        
+        console.log(hangmanDisplay);
         console.log(display);
         console.log(`Remaining Guesses ${remainingGuesses}`);
         let guessedLetter = prompt.question('Please guess a letter');
