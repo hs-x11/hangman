@@ -65,7 +65,7 @@ const updateDisplay = (word, display, guessedLetter) => {
         }
     }
     return userDisplay.join('');
-}
+};
 
 const checkGuess = (word, guessedLetter) => {
     if (word.includes(guessedLetter)) {
@@ -87,7 +87,7 @@ const isGameOver = (word, remainingGuesses) => {
     } else {
         return false;
     }
-}
+};
     
 
 
@@ -115,7 +115,7 @@ const playGame = () => {
         // we call out the methods here
     }
 
-}
+};
 
 // Start the game
 playGame();
