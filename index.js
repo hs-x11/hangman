@@ -81,11 +81,14 @@ const updateGuesses = (remainingGuesses, isCorrectGuess) => {
     // return the update
 } 
 
-// function to check if the game is over or not
 const isGameOver = (word, remainingGuesses) => {
-    // check if the word is fully guesses or if remaining guesses are 0
-    // return true or false
+    if (remainingGuesses === 0 || !word.includes("_")) {
+        return true;
+    } else {
+        return false;
+    }
 }
+    
 
 
 // main game starting loop
@@ -93,7 +96,7 @@ const playGame = () => {
     // pick a random word
     const randomWord = getRandomWord();
     let display = initializeDisplay();
-    let remainingGuesses = 6;
+    let remainingGuesses = 7;
     let guessedLetter = [];
 
     // repeat until the game is won or amount of guesses is = 0.
