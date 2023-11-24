@@ -75,11 +75,13 @@ const checkGuess = (word, guessedLetter) => {
     }
 };
 
-// function to update the remaning guesses
 const updateGuesses = (remainingGuesses, isCorrectGuess) => {
-    // Decrease remaining guesses if the guess is incorrect
-    // return the update
-} 
+    if (isCorrectGuess) {
+        return remainingGuesses;
+    } else {
+        return remainingGuesses - 1;
+    }
+};
 
 const isGameOver = (word, remainingGuesses) => {
     if (remainingGuesses === 0 || !word.includes("_")) {
@@ -89,7 +91,6 @@ const isGameOver = (word, remainingGuesses) => {
     }
 };
     
-
 
 // main game starting loop
 const playGame = () => {
