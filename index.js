@@ -2,41 +2,32 @@ import prompt from "readline-sync";
 import wordBank from "./word-bank.js";
 
 const hangmanBody = (remainingGuesses) => {
-    if (remainingGuesses === 7) {
+    if (remainingGuesses === 6) {
         return `\nWelcome to Hangman!\nPress ctrl+c to stop\n`;
 
-    } else if(remainingGuesses === 6) {
+    } else if(remainingGuesses === 5) {
         return `
         O
-        `;
-    } else if (remainingGuesses === 5) {
-        return `
-         O
-         |
         `;
     } else if (remainingGuesses === 4) {
         return `
          O
-         |
          |
         `;
     } else if (remainingGuesses === 3) {
         return `
          O
         /|
-         |
         `;
     } else if (remainingGuesses === 2) {
         return `
          O
         /|\\
-         |
        `;
     } else if (remainingGuesses === 1) {
         return  `
          O
         /|\\
-         |
         /
        `;
     }
@@ -49,6 +40,7 @@ const getRandomWord = () => {
     return word;
 };
 
+
 const initializeDisplay = (word) => {
     const underScoreWord = [];
     for (let i = 0; i < word.length; i++) {
@@ -56,6 +48,7 @@ const initializeDisplay = (word) => {
     }
     return underScoreWord.join('');
 };
+
 
 const updateDisplay = (word, display, guessedLetter) => {
     const userDisplay = display.split('');
@@ -67,6 +60,7 @@ const updateDisplay = (word, display, guessedLetter) => {
     return userDisplay.join('');
 };
 
+
 const checkGuess = (word, guessedLetter) => {
     if (word.includes(guessedLetter)) {
         return true;
@@ -75,6 +69,7 @@ const checkGuess = (word, guessedLetter) => {
     }
 };
 
+
 const updateGuesses = (remainingGuesses, isCorrectGuess) => {
     if (isCorrectGuess) {
         return remainingGuesses;
@@ -82,6 +77,7 @@ const updateGuesses = (remainingGuesses, isCorrectGuess) => {
         return remainingGuesses - 1;
     }
 };
+
 
 const isGameOver = (word, remainingGuesses) => {
     if (remainingGuesses === 0 || !word.includes("_")) {
@@ -97,7 +93,7 @@ const playGame = () => {
     // pick a random word
     const randomWord = getRandomWord();
     let display = initializeDisplay();
-    let remainingGuesses = 7;
+    let remainingGuesses = 6;
     let guessedLetter = [];
 
     // repeat until the game is won or amount of guesses is = 0.
