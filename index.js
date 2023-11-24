@@ -1,46 +1,95 @@
 import prompt from "readline-sync";
 import wordBank from "./word-bank.js";
 
+const drawHangman = (remainingGuesses) => {
+    if (remainingGuesses === 7) {
+        return `\nWelcome to Hangman!\nPress ctrl+c to stop\n`;
+
+    } else if(remainingGuesses === 6) {
+        return `
+        O
+        `;
+    } else if (remainingGuesses === 5) {
+        return `
+         O
+         |
+        `;
+    } else if (remainingGuesses === 4) {
+        return `
+         O
+         |
+         |
+        `;
+    } else if (remainingGuesses === 3) {
+        return `
+         O
+        /|
+         |
+        `;
+    } else if (remainingGuesses === 2) {
+        return `
+         O
+        /|\\
+         |
+       `;
+    } else if (remainingGuesses === 1) {
+        return  `
+         O
+        /|\\
+         |
+        /
+       `;
+    }
+};
+
+
 const getRandomWord = () => {
     let word = wordBank;
     word = word[Math.floor(Math.random() * word.length)];
     return word;
 };
 
-const initializeDisplay = () => {
-    let underScoreWord = [];
-    for (let i = 0; i < getRandomWord().length; i++) { 
+const initializeDisplay = (word) => {
+    const underScoreWord = [];
+    for (let i = 0; i < word.length; i++) {
         underScoreWord[i] = '_';
     }
     return underScoreWord.join('');
-}
-console.log(initializeDisplay());
+};
 
-// function to update the display that the user can see
-function updateDisplay(string) {
-// replace the underscored in the display with the correct guessed letter if it is the word.
+const updateDisplay = (word, display, guessedLetter) => {
+    const userDisplay = display.split('');
+    for (let i = 0; i < word.length; i++) {
+        if (word[i] === guessedLetter) {
+            userDisplay[i] = guessedLetter;
+        }
+    }
+    return userDisplay.join('');
 }
 
-// funtion to check if the guess is correct
-function checkGuess(word,guessedLetter) {
-    // check if the word contains the guessed letter
-    // return true or false (boolean)
-}
+const checkGuess = (word, guessedLetter) => {
+    if (word.includes(guessedLetter)) {
+        return true;
+    } else {
+        return false;
+    }
+};
 
 // function to update the remaning guesses
-function updateGuesses(remainingGuesses, isCorrectGuess) {
+const updateGuesses = (remainingGuesses, isCorrectGuess) => {
     // Decrease remaining guesses if the guess is incorrect
     // return the update
 } 
 
 // function to check if the game is over or not
-function isGameOver(word, remainingGuesses) {
+const isGameOver = (word, remainingGuesses) => {
     // check if the word is fully guesses or if remaining guesses are 0
     // return true or false
 }
 
+
 // main game starting loop
-function playGame() {
+const playGame = () => {
     // pick a random word
     const randomWord = getRandomWord();
     let display = initializeDisplay();
@@ -62,9 +111,5 @@ function playGame() {
 
 }
 
-
-const alphabet = "ABCDEFGHIJKLMOPQRSTUVWXYZ".split('');
-
-console.log("\nWelcome to Hangman!\nPress ctrl+c to stop\n");
-
-const guess = prompt.question("Please guess a letter: ");
+// Start the game
+playGame();
