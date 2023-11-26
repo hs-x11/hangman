@@ -1,6 +1,6 @@
 # Hangman
 ## Description
-This Hangman project is a simple and fun game created with Node.js, that is meant to be played in your computers terminal. The game will start off by randomly generating a word from the `word-bank.js` file, and you will be given 6 tries to guess the word before you run out of tries to save the man!
+This Hangman project is a simple and fun game created with Node.js, that is meant to be played in your computers terminal. The game will start off by randomly generating a word from the `word-bank.js` file, and you will be given 6 tries to guess the word letter by letter, before running out of tries to save the man!
 ## Before We Begin
 ### Dependencies
 - [Visual Studio Code](https://code.visualstudio.com/)
@@ -9,7 +9,7 @@ This Hangman project is a simple and fun game created with Node.js, that is mean
 ### Getting Started
 - Open either Git Bash if you're a windows user or the Terminal for Linux/Mac OS users.
 - Navigate to where you'd like to clone the hangman repo on your computer.
--Clone the repo using the following command:
+- Clone the repo using the following command:
 ```
 git clone https://github.com/hs-x11/hangman.git
 ``` 
