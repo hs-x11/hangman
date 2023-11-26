@@ -13,7 +13,9 @@ Project for CanCode JavaScript Fundamentals Class
 - Open the extracted hangman file in Visual Studio Code
 - Click Terminal > New Terminal
 - In your Terminal paste the following 
-```npm install --save readline-sync```
+```
+npm install --save readline-sync
+```
 ## How to Play
 In your Visual Studio Code Terminal you can start the game by typing 
 ```node .```
