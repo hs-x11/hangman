@@ -88,31 +88,48 @@ const isGameOver = (word, remainingGuesses) => {
 };
     
 
-// main game starting loop
 const playGame = () => {
-    // pick a random word
     const randomWord = getRandomWord();
-    let display = initializeDisplay();
+    let display = initializeDisplay(randomWord);
     let remainingGuesses = 6;
-    let guessedLetter = [];
+    let guessedLetters = [];
 
-    // repeat until the game is won or amount of guesses is = 0.
-    while(!isGameOver(word, display, remainingGuesses)) {
+    while (!isGameOver(display, remainingGuesses)) {
         const hangmanDisplay = hangmanBody(remainingGuesses);
-        
         console.log(hangmanDisplay);
         console.log(display);
-        console.log(`Remaining Guesses ${remainingGuesses}`);
-        let guessedLetter = prompt.question('Please guess a letter');
-        // if the letter has already been guessed, let the user know to guess again
-        if(guessedLetter.includes) {
-        // if true render a message letting user know they already guessed the letter. do not update the count.
+        console.log(`Remaining Guesses: ${remainingGuesses}`);
+
+        let guessedLetter = prompt.question('Please guess a letter: ');
+        guessedLetter = guessedLetter.toLowerCase();
+
+        while (guessedLetters.includes(guessedLetter)) {
+            console.log('You already guessed that letter. Please guess again.');
+            guessedLetter = prompt.question('Please guess a letter: ');
+            guessedLetter = guessedLetter.toLowerCase();
         }
-        // we can check the guess as well as update the display
-        // we call out the methods here
+        guessedLetters.push(guessedLetter);
+    
+        const isCorrectGuess = checkGuess(randomWord, guessedLetter);
+        display = updateDisplay(randomWord, display, guessedLetter);
+        remainingGuesses = updateGuesses(remainingGuesses, isCorrectGuess);
     }
 
+    console.log(`\nFinal Result: ${display}`);
+    if (remainingGuesses === 0) {
+        console.log(`
+         O
+        /|\\
+        / \\`)
+        
+        console.log(`
+                 ૮(˶╥︿╥)ა 
+        Game over! The word was: ${randomWord}.`);
+    } else {
+        console.log(`
+                     ♡⸜(ˆᗜ ˆ˵ )⸝♡
+        Congratulations! You guessed the word!`);
+    }
 };
 
-// Start the game
 playGame();
