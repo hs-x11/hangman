@@ -1,6 +1,6 @@
 # Hangman
 ## Description
-Project for CanCode JavaScript Fundamentals Class
+This Hangman project is a simple and fun game created with Node.js, that is meant to be played in your computers terminal. The game will start off by randomly generating a word from the `word-bank.js` file, and you will be given 6 tries to guess the word before you run out of tries to save the man!
 ## Before We Begin
 ### Dependencies
 - [Visual Studio Code](https://code.visualstudio.com/)
@@ -18,6 +18,8 @@ npm install --save readline-sync
 ```
 ## How to Play
 In your Visual Studio Code Terminal you can start the game by typing 
-```node .```
+```
+node .
+```
 ## Author
 Hasina S. - [GitHub](https://github.com/hs-x11)
