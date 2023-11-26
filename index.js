@@ -96,6 +96,7 @@ const playGame = () => {
 
     while (!isGameOver(display, remainingGuesses)) {
         const hangmanDisplay = hangmanBody(remainingGuesses);
+        
         console.log(hangmanDisplay);
         console.log(display);
         console.log(`Remaining Guesses: ${remainingGuesses}`);
