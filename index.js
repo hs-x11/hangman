@@ -6,26 +6,26 @@ const hangmanBody = (remainingGuesses) => {
         return `\nWelcome to Hangman!\nPress ctrl+c to stop\n`;
 
     } else if(remainingGuesses === 5) {
-        return `
+        return `\nRemaining Guesses: ${remainingGuesses}
         O
         `;
     } else if (remainingGuesses === 4) {
-        return `
+        return `\nRemaining Guesses: ${remainingGuesses}
          O
          |
         `;
     } else if (remainingGuesses === 3) {
-        return `
+        return `\nRemaining Guesses: ${remainingGuesses}
          O
         /|
         `;
     } else if (remainingGuesses === 2) {
-        return `
+        return `\nRemaining Guesses: ${remainingGuesses}
          O
         /|\\
        `;
     } else if (remainingGuesses === 1) {
-        return  `
+        return  `\nRemaining Guesses: ${remainingGuesses}
          O
         /|\\
         /
@@ -99,7 +99,6 @@ const playGame = () => {
         
         console.log(hangmanDisplay);
         console.log(display);
-        console.log(`Remaining Guesses: ${remainingGuesses}`);
 
         let guessedLetter = prompt.question('Please guess a letter: ');
         guessedLetter = guessedLetter.toLowerCase();
@@ -121,9 +120,7 @@ const playGame = () => {
         console.log(`
          O
         /|\\
-        / \\`)
-        
-        console.log(`
+        / \\
                  ૮(˶╥︿╥)ა 
         Game over! The word was: ${randomWord}.`);
     } else {
