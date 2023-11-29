@@ -2,34 +2,33 @@ import prompt from "readline-sync";
 import wordBank from "./word-bank.js";
 
 const hangmanBody = (remainingGuesses) => {
-    if (remainingGuesses === 6) {
-        return `\nWelcome to Hangman!\nPress ctrl+c to stop\n`;
-
-    } else if(remainingGuesses === 5) {
-        return `\nRemaining Guesses: ${remainingGuesses}
+    if(remainingGuesses === 5) {
+        return `\nRemaining Guesses: ${remainingGuesses}\n
         O
         `;
     } else if (remainingGuesses === 4) {
-        return `\nRemaining Guesses: ${remainingGuesses}
+        return `\nRemaining Guesses: ${remainingGuesses}\n
          O
          |
         `;
     } else if (remainingGuesses === 3) {
-        return `\nRemaining Guesses: ${remainingGuesses}
+        return `\nRemaining Guesses: ${remainingGuesses}\n
          O
         /|
         `;
     } else if (remainingGuesses === 2) {
-        return `\nRemaining Guesses: ${remainingGuesses}
+        return `\nRemaining Guesses: ${remainingGuesses}\n
          O
         /|\\
        `;
     } else if (remainingGuesses === 1) {
-        return  `\nRemaining Guesses: ${remainingGuesses}
+        return  `\nRemaining Guesses: ${remainingGuesses}\n
          O
         /|\\
         /
        `;
+    } else {
+        return '';
     }
 };
 
@@ -94,6 +93,8 @@ const playGame = () => {
     let remainingGuesses = 6;
     let guessedLetters = [];
 
+    console.log(`\nWelcome to Hangman!\nPress ctrl+c to stop`);
+
     while (!isGameOver(display, remainingGuesses)) {
         const hangmanDisplay = hangmanBody(remainingGuesses);
         
@@ -104,7 +105,7 @@ const playGame = () => {
         guessedLetter = guessedLetter.toLowerCase();
 
         while (guessedLetters.includes(guessedLetter)) {
-            console.log('You already guessed that letter. Please guess again.');
+            console.log('\nYou already guessed that letter. Please guess again.');
             guessedLetter = prompt.question('Please guess a letter: ');
             guessedLetter = guessedLetter.toLowerCase();
         }
@@ -115,16 +116,15 @@ const playGame = () => {
         remainingGuesses = updateGuesses(remainingGuesses, isCorrectGuess);
     }
 
-    console.log(`\nFinal Result: ${display}`);
     if (remainingGuesses === 0) {
-        console.log(`
+        console.log(`\nFinal Result: ${display}
          O
         /|\\
         / \\
                  ૮(˶╥︿╥)ა 
         Game over! The word was: ${randomWord}.`);
     } else {
-        console.log(`
+        console.log(`\nFinal Result: ${display}
                      ♡⸜(ˆᗜ ˆ˵ )⸝♡
         Congratulations! You guessed the word!`);
     }
